@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/findUserWithHeader")
-    public ResponseEntity<List<User>> findUserWithHeader(@RequestHeader(name = "permission") String permission){
+    public ResponseEntity<List<User>> findUserWithHeader(@RequestHeader(name = "permission", required = false) String permission){
         return userService.findUserWithUser(permission);
     }
 

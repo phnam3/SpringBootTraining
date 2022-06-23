@@ -47,6 +47,6 @@ public class UserService {
     }
 
     public ResponseEntity<List<User>> findUserWithUser(String permission) {
-        return ResponseEntity.ok(userRepository.findUserByPermissionList_Role(permission));
+        return ResponseEntity.ok(permission != null ? userRepository.findUserByPermissionList_Role(permission) : userRepository.findAll());
     }
 }
