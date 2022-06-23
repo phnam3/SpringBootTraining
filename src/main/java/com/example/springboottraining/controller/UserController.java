@@ -5,6 +5,7 @@ import com.example.springboottraining.entity.User;
 import com.example.springboottraining.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,12 @@ import java.util.List;
 @Slf4j
 public class UserController {
     private final UserService userService;
+
+    @GetMapping("/findAll")
+    public ResponseEntity<Page> findOne(@RequestParam(name = "page", defaultValue = "0") Integer page,
+                                        @RequestParam(name = "size", defaultValue = "10") Integer size) {
+        return userService.findAll(page,size);
+    }
 
     @GetMapping("/findOne")
     public ResponseEntity<User> findOne(@RequestParam(name = "id") Long id) {
