@@ -1,6 +1,7 @@
 package com.example.springboottrainingv2.dto;
 
 import com.example.springboottrainingv2.constants.Gender;
+import com.example.springboottrainingv2.entity.City;
 import com.example.springboottrainingv2.entity.School;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,4 +13,5 @@ public class UserDto {
     private String name;
     private Gender gender;
     private School school;
+    private City city;
 }

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface UserService {
-     List<UserDto> get();
-
-     ResponseEntity<List<UserDto>> findAll(Integer page, Integer size);
-     ResponseEntity<List<UserDto>> findAll(Integer page, Integer size, String order, String by);
+    List<UserDto> get();
+    List<UserDto> findAll(Integer page, Integer size);
+    List<UserDto> findAll(Integer page, Integer size, String order, String by);
+    String getProperties(String key);
 }

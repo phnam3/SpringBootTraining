@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/User
+    username: postgres
+    password: Fateavernous123
+    show-sql: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  application:
+    name: spring-boot-training
+  flyway:
+    default-schema: new_application
+
+logging:
+  level:
+    com.example.springboottraining: INFO
+    org.hibernate: INFO
+    liquibase: INFO
+
+server:
+  error:
+    include-message: always
+
+app:
+  test: true
+  defaultTitle: Test default title
+  title: Test title
+  description: Test descriptions

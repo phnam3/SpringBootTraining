@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,8 +25,15 @@ public class User {
     @Convert(converter = GenderEnumConverter.class)
     private Gender gender;
 
+    //Many to one bi-directional with serialization handling with school entity
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name="school_id",nullable = false)
     private School school;
+
+    //Many to one uni-directional with city entity
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name="city_id",nullable = false)
+    private City city;
 }
