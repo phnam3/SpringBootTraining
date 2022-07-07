@@ -33,7 +33,6 @@ public class User {
 
     //Many to one uni-directional with city entity
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name="city_id",nullable = false)
     private City city;
 }

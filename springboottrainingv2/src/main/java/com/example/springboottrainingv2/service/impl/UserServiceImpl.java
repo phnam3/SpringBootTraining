@@ -8,10 +8,8 @@ import com.example.springboottrainingv2.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.*;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,21 +32,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> findAll(Integer page, Integer size) {
-        PageRequest pageRequest = PageRequest.of(page, size);
-        return userRepository.findAll(pageRequest).stream().map(this::toDto).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<UserDto> findAll(Integer page, Integer size, String order, String by) {
-        Sort sort = null;
-        if (order.equalsIgnoreCase("ASC")) {
-            sort = Sort.by(Sort.Direction.ASC, by);
-        } else if (order.equalsIgnoreCase("DESC")) {
-            sort = Sort.by(Sort.Direction.DESC, by);
-        }
-        PageRequest pageRequest = PageRequest.of(page, size, sort);
-        return userRepository.findAll(pageRequest).stream().map(this::toDto).collect(Collectors.toList());
+    public Page<UserDto> findAll(Pageable pageable) {
+        Page<User> userPage = userRepository.findAll(pageable);
+        List<UserDto> users = userPage.stream().map(this::toDto).collect(Collectors.toList());
+        return new PageImpl<>(users);
     }
 
     @Override

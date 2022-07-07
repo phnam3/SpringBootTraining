@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,14 +26,10 @@ public class TestUserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> findAll(Integer page, Integer size) {
+    public Page<UserDto> findAll(Pageable pageable) {
         return null;
     }
 
-    @Override
-    public List<UserDto> findAll(Integer page, Integer size, String order, String by) {
-        return null;
-    }
 
     public String getProperties(String key) {
         // Read from os environment variables

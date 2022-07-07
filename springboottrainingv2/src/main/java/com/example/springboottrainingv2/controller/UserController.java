@@ -1,12 +1,10 @@
 package com.example.springboottrainingv2.controller;
 
 import com.example.springboottrainingv2.Springboottrainingv2Application;
-import com.example.springboottrainingv2.entity.config.AppProperties;
 import com.example.springboottrainingv2.service.UserService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,14 +20,8 @@ public class UserController {
 
 
     @GetMapping("/getAll")
-    public ResponseEntity<?> findAll(@RequestParam(name = "page", defaultValue = "0") Integer page,
-                                                 @RequestParam(name = "size", defaultValue = "10") Integer size,
-                                                 @RequestParam(name = "order", required = false) String order,
-                                                 @RequestParam(name = "by", required = false) String by){
-        if(order == null || order.isEmpty() || by == null || by.isEmpty()){
-            return ResponseEntity.ok(userService.findAll(page,size));
-        }
-        return ResponseEntity.ok(userService.findAll(page,size,order,by));
+    public ResponseEntity<?> findAll(@PageableDefault Pageable pageable){
+        return ResponseEntity.ok(userService.findAll(pageable));
     }
 
     @GetMapping
