@@ -9,6 +9,8 @@ import java.util.List;
 public interface UserService {
     List<UserDto> get();
 
+//    void create(); // For testing cascadeType method
+
     Page<UserDto> findAll(Pageable pageable);
 
     String getProperties(String key);

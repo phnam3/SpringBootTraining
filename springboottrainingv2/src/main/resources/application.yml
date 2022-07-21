@@ -14,14 +14,13 @@ spring:
   flyway:
     default-schema: new_application
 ## select profile from default profile
-#  profiles:
-#    active: profile1
+  profiles:
+    active: profile1
 
 logging:
   level:
-    com.example.springboottraining: INFO
+    com.example.springboottrainingv2: INFO
     org.hibernate: INFO
-    liquibase: INFO
 
 server:
   error:

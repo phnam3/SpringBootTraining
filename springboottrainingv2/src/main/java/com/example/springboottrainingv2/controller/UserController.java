@@ -24,6 +24,12 @@ public class UserController {
         return ResponseEntity.ok(userService.findAll(pageable));
     }
 
+//    @GetMapping("/create")
+//    public ResponseEntity<?> create(){
+//        userService.create();
+//        return ResponseEntity.ok("Created");
+//    }
+
     @GetMapping
     public ResponseEntity<?> get(){
         return ResponseEntity.ok(userService.get());

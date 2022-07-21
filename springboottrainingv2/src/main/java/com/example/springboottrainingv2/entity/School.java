@@ -23,7 +23,7 @@ public class School {
 
     private String name;
 
-    @OneToMany(mappedBy = "school")
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<User> users;
 }
